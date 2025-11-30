@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "c832fa52-e3f9-487d-b79c-33cd4a6e9f23",
+		"name": "Fitness AI Backend",
+		"description": "Collection for Fitness AI Backend API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27623200"
+	},
+	"item": [
+		{
+			"name": "Root Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 25,\n    \"gender\": \"male\",\n    \"height\": 175,\n    \"weight\": 80,\n    \"goal\": \"fat_loss\",\n    \"activity\": \"moderate\",\n    \"diet\": \"non-veg\",\n    \"allergies\": \"none\",\n    \"equipment\": \"gym\",\n    \"time_available\": \"1 hour\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Plan",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/generate-plan/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"generate-plan",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Log Progress",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 1,\n    \"date\": \"2025-11-29\",\n    \"meals\": \"Chicken rice + banana + whey\",\n    \"workout\": \"Push day workout\",\n    \"water\": 3,\n    \"steps\": 8500\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/log-progress",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"log-progress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Weekly Review",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/weekly-review/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"weekly-review",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
