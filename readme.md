@@ -1,90 +1,123 @@
-🧠 Fitness & Diet AI Backend
+# FitMindAI – Fitness & Diet AI Backend
 
-An AI-powered personal trainer that generates diet plans, workout routines, tracks user progress, and provides weekly summaries.
-Built using FastAPI, MySQL, and GitHub Models (OpenAI).
+An AI-powered wellness backend that generates personalized workout routines, diet plans, habit tracking, and weekly fitness summaries.  
+Built with FastAPI, MySQL, and GitHub Models (OpenAI-compatible).
 
-🚀 Features
+---
 
-📋 User Registration
+## Features
 
-🥗 AI-generated Diet Plans
+- User registration  
+- AI-generated diet plans  
+- AI-generated workout routines  
+- Daily habit and progress logging  
+- Weekly AI-powered fitness summaries  
+- MySQL database storage  
+- FastAPI backend  
+- Powered by GitHub Models (OpenAI / GPT-compatible)
 
-🏋️ AI-generated Workout Routines
+---
 
-📈 Daily Habit & Progress Logging
+## Tech Stack
 
-🔁 Weekly Fitness Summary by AI
+- Python 3.10+  
+- FastAPI  
+- SQLAlchemy ORM  
+- MySQL  
+- PyMySQL  
+- GitHub Models (OpenAI-compatible)
 
-💾 MySQL Database Storage
+---
 
-⚡ Lightning-fast FastAPI backend
+## Installation
 
-🤖 Powered by GitHub LLMs (openai/gpt-4.1-mini)
+```bash
+git clone https://github.com/amana-ali/fitmind-ai-capstone-myproject.git  
+cd fitmind-ai-capstone-myproject
+```
 
-🧰 Tech Stack
+Create a virtual environment:
 
-Python 3.10+
-
-FastAPI
-
-SQLAlchemy ORM
-
-MySQL (Port 3306)
-
-PyMySQL
-
-GitHub Models (OpenAI API compatibility)
-
-📦 Installation
-1️⃣ Clone the repo
-git clone https://github.com/yourusername/fitness-ai-backend.git
-cd fitness-ai-backend
-
-2️⃣ Create virtual environment
+```bash
 python -m venv venv
-venv\Scripts\activate     # Windows
-source venv/bin/activate  # macOS/Linux
+```
 
-3️⃣ Install dependencies
+Activate the environment:
+
+- On Windows:
+  ```bash
+  venv\Scripts\activate
+  ```
+- On macOS / Linux:
+  ```bash
+  source venv/bin/activate
+  ```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
-🛢 Setup MySQL Database (Port 3306)
-1️⃣ Create MySQL database:
+---
+
+## Database Setup (MySQL — Port 3306)
+
+1. Create the database:
+
+```sql
 CREATE DATABASE fitness_ai;
+```
 
-2️⃣ Update credentials in database.py:
+2. Update the credentials in `database.py`:
+
+```python
 MYSQL_USER = "root"
 MYSQL_PASSWORD = "yourpassword"
 MYSQL_HOST = "localhost"
 MYSQL_PORT = 3306
 MYSQL_DB = "fitness_ai"
+```
 
-🔑 Environment Variables
+---
+
+## Environment Variables
 
 Set your GitHub Models token:
 
-Windows (PowerShell):
-setx GITHUB_TOKEN "your_token_here"
+- On Windows (PowerShell):
 
-▶️ Running the Server
+  ```powershell
+  setx GITHUB_TOKEN "your_token_here"
+  ```
 
-Start FastAPI using Uvicorn:
+- On macOS / Linux:
 
+  ```bash
+  export GITHUB_TOKEN="your_token_here"
+  ```
+
+---
+
+## Running the Server
+
+Start the FastAPI server using Uvicorn:
+
+```bash
 python -m uvicorn main:app --reload
+```
 
+Open the API documentation at:  
+[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
-Open Swagger UI:
+---
 
-http://127.0.0.1:8000/docs
+## API Endpoints
 
-📡 API Endpoints (Usage Flow)
-1️⃣ Register User
-
-Creates new user and returns user_id.
-
-POST /register
-
-Request Body:
+### 1. Register User  
+**POST** `/register`  
+Request body example:
+```json
 {
   "name": "John",
   "age": 25,
@@ -98,20 +131,16 @@ Request Body:
   "equipment": "gym",
   "time_available": "60 min"
 }
+```
 
-2️⃣ Generate Plan
+### 2. Generate Plan  
+**POST** `/generate-plan/{user_id}`  
+Generates personalized diet and workout plan.
 
-Creates a personalized diet + workout plan.
-
-POST /generate-plan/{user_id}
-
-No request body required.
-
-3️⃣ Log Daily Progress
-
-POST /log-progress
-
-Request Body:
+### 3. Log Daily Progress  
+**POST** `/log-progress`  
+Request body example:
+```json
 {
   "user_id": 1,
   "date": "2025-11-29",
@@ -120,67 +149,69 @@ Request Body:
   "water": 2500,
   "steps": 8000
 }
+```
 
-4️⃣ Weekly Review
+### 4. Weekly Review  
+**GET** `/weekly-review/{user_id}`  
+Generates weekly summary and suggestions based on logged data.
 
-Analyzes logged habits & workouts.
+---
 
-GET /weekly-review/{user_id}
+## Project Structure
 
-📁 Project Structure
-fitness_ai_backend/
-│── main.py
-│── database.py
-│── models.py
-│── schemas.py
-│── requirements.txt
-│── README.md
+```
+fitmind-ai-capstone-myproject/
+│── main.py  
+│── database.py  
+│── models.py  
+│── schemas.py  
+│── requirements.txt  
+│── README.md  
+```
 
-🤖 How AI Works in This Project
+---
 
-The backend uses GitHub Models (OpenAI compatible):
+## How AI Works
 
+The backend uses GitHub Models (OpenAI-compatible):
+
+```python
 endpoint = "https://models.github.ai/inference"
 model = "openai/gpt-4.1-mini"
+```
+
+The model generates:
+- Calorie targets  
+- Macronutrient breakdowns  
+- Complete meal plans  
+- Workout routines  
+- Weekly summaries and suggestions based on user logs  
+
+---
+
+## Testing
+
+After running the server, you can test all APIs via Swagger UI at:  
+[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+---
+
+## Future Enhancements
+
+- JWT-based user authentication  
+- Progress tracking charts & analytics  
+- Frontend interface (React / Next.js / Flutter)  
+- Automatic calorie calculation & nutrition database  
+- Expanded exercise & meal databases  
+- AI-based food image recognition  
+
+---
+
+## Notes
+
+This project was developed as part of my Kaggle Capstone submission.
 
 
-LLM generates:
-
-calorie goals
-
-macros
-
-diet plans
-
-workout routines
-
-weekly summaries
-
-🧪 Testing With Postman
-
-You can test all APIs using:
-
-http://localhost:8000/docs
 
 
-or import a Postman collection (I can generate one for you).
 
-🚀 Future Enhancements
-
-User authentication (JWT)
-
-Progress graphs & charts
-
-Frontend (React / Next.js / Flutter)
-
-Calories auto-calculation
-
-Exercise database
-
-Meal database
-
-AI-based food image recognition
-
-❤️ Contributing
-
-PRs and feature requests are welcome!
